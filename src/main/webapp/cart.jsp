@@ -1912,12 +1912,12 @@
                                     </td>
                                     <td><%= formatter.format(s.getPrice()) %></td>
                                     <td>
-                                        <a class="btnInc"
+                                        <a class="btnDec"
                                                 href="<%= urlRew + "Decrement&shoesID=" + s.getID()%>">
                                             &nbsp;-&nbsp;
                                         </a>
                                         <label><%= i.getValue() %></label> 
-                                        <a class="btnDec"
+                                        <a class="btnInc"
                                                 href="<%= urlRew + "Increment&shoesID=" + s.getID() %>">
                                             &nbsp;+&nbsp;
                                         </a>

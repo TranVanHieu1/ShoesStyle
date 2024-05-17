@@ -166,8 +166,6 @@
                             <th>Role</th>
                             <th>Phone number</th>
                             <th>Address</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
                             </thead>
                             <tbody>
                                 <%
@@ -180,8 +178,6 @@
                                     <td><%= a.getRole() %></td>
                                     <td><%= a.getStrPhonenumber()%></td>
                                     <td><%= a.getStrAddress()%></td>
-                                    <td><a href="">Edit</a></td>
-                                    <td><a href="">Delete</a></td>
                                 </tr>
                                 <% } %>
                             </tbody>

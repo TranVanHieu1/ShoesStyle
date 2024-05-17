@@ -36,32 +36,27 @@ public class CartQuantityController extends HttpServlet {
             throws ServletException, IOException {
         String shoesID = request.getParameter("shoesID");
         String btn = request.getParameter("btnSubmit");
-        
+
         Cart cart = ((Account) request.getSession().getAttribute("UserAccount")).getUserCart();
         RegistrationDAO dao = new RegistrationDAO();
-        
+
         for (HashMap.Entry<Shoes, Integer> s : cart.getItemList().entrySet()) {
             if (s.getKey().getID().equals(shoesID)) {
                 if (btn.equals("Increment")) {
                     s.setValue(s.getValue() + 1);
                     dao.updateShoesQuantity(
-                        s.getKey(), 
-                        s.getValue()
+                            s.getKey(),
+                            s.getValue()
                     );
-                }
-                else {
+                } else {
                     if (s.getValue() == 1) {
-                        dao.updateShoesQuantity(
-                            s.getKey(), 
-                            0
-                        );
+                        dao.updateShoesQuantity(s.getKey(),0);
                         cart.getItemList().remove(s.getKey());
-                    }
-                    else {
+                    } else {
                         s.setValue(s.getValue() - 1);
                         dao.updateShoesQuantity(
-                            s.getKey(), 
-                            s.getValue()
+                                s.getKey(),
+                                s.getValue()
                         );
                     }
                 }

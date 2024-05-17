@@ -1376,13 +1376,18 @@ public class RegistrationDAO implements Serializable {
             if (con != null) {
                 String sql;
                 if (newQuan == 0) {
-                    sql = "DELETE FROM Order_Item WHERE Item_ID='" + shoes.getID() + "'";
+                    sql = "DELETE FROM Order_Item WHERE Item_ID='" + shoes.getID() + "'" +
+                            " DELETE FROM Item WHERE Item_ID='" + shoes.getID() + "'";
+                    con.createStatement().executeUpdate(sql);
+                    return true;
                 }
                 else {
-                    sql = "UPDATE Item SET Quantity=" + newQuan + " WHERE Item_ID='" + shoes.getID() + "'";
+                    sql = "UPDATE Item SET Quantity=" + newQuan + " WHERE Item_ID='" + shoes.getID() + "'" +
+                            " UPDATE Order_Item SET Quantity=" + newQuan + " WHERE Item_ID='" + shoes.getID() + "'" ;
+                    con.createStatement().executeUpdate(sql);
+                    return true;
                 }
-                con.createStatement().execute(sql);
-                return true;
+                
             }
         }
         catch (SQLException s) {
